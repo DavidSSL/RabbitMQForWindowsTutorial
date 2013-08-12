@@ -20,7 +20,7 @@ namespace Consumer2
             channel.ExchangeDeclare(Exchange, ExchangeType.Direct);
 
             channel.QueueDeclare(Queue, false, false, true, null);
-            channel.QueueBind(Queue, Exchange, "");
+            channel.QueueBind(Queue, Exchange, "anything");
 
             var consumer = new QueueingBasicConsumer(channel);
             channel.BasicConsume(Queue, true, consumer);
@@ -45,7 +45,6 @@ namespace Consumer2
 
             channel.Close();
             connection.Close();
-
         }
     }
 }

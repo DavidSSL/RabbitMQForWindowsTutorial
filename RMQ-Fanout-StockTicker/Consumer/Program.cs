@@ -44,7 +44,6 @@ namespace Consumer
 
             channel.Close();
             connection.Close();
-
         }
     }
 }
