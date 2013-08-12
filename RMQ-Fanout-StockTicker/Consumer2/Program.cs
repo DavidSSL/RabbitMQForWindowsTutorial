@@ -17,7 +17,7 @@ namespace Consumer2
             IConnection connection = connectionFactory.CreateConnection();
             IModel channel = connection.CreateModel();
 
-            channel.ExchangeDeclare(Exchange, ExchangeType.Direct);
+            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout);
 
             channel.QueueDeclare(Queue, false, false, true, null);
             channel.QueueBind(Queue, Exchange, "anything");

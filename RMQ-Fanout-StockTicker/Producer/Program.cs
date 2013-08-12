@@ -21,7 +21,7 @@ namespace Producer
             IConnection connection = connectionFactory.CreateConnection();
             IModel channel = connection.CreateModel();
             
-            channel.ExchangeDeclare(Exchange, ExchangeType.Direct);
+            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout);
             
             var thread = new Thread(() => PublishQuotes(channel));
             thread.Start();
