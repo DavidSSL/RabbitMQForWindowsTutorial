@@ -4,12 +4,12 @@ using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace Consumer
+namespace Consumer2
 {
     class Program
     {
         private const string Exchange = "fanout-exchange-example";
-        private const string Queue = "quotes";
+        private const string Queue = "quotes2";
 
         static void Main()
         {
@@ -24,7 +24,7 @@ namespace Consumer
             var consumer = new QueueingBasicConsumer(channel);
             channel.BasicConsume(Queue, true, consumer);
 
-            Console.WriteLine("In Consumer");
+            Console.WriteLine("In Consumer2");
             Console.WriteLine("===========");
             while (true)
             {
