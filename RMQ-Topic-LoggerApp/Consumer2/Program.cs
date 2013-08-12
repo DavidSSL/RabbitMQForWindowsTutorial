@@ -4,14 +4,15 @@ using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace Consumer
+namespace Consumer2
 {
     class Program
     {
         static void Main()
         {
-            Console.WriteLine("Should show only Personal messages");
-            Console.WriteLine("=================================="); const string exchange = "topic-exchange-example";
+            Console.WriteLine("Should show only Business messages");
+            Console.WriteLine("==================================");
+            const string exchange = "topic-exchange-example";
             const string queue = "log";
 
             var connectionFactory = new ConnectionFactory();
@@ -20,7 +21,7 @@ namespace Consumer
 
             channel.ExchangeDeclare(exchange, ExchangeType.Topic, false, true, null);
             channel.QueueDeclare(queue, false, false, true, null);
-            channel.QueueBind(queue, exchange, "*.Personal.*");
+            channel.QueueBind(queue, exchange, "*.Business.*");
 
             var consumer = new QueueingBasicConsumer(channel);
             channel.BasicConsume(queue, true, consumer);
@@ -29,7 +30,7 @@ namespace Consumer
             {
                 try
                 {
-                    var eventArgs = (BasicDeliverEventArgs) consumer.Queue.Dequeue();
+                    var eventArgs = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
                     var message = Encoding.UTF8.GetString(eventArgs.Body);
                     Console.WriteLine(string.Format("{0} - {1}", eventArgs.RoutingKey, message));
                 }
