@@ -9,7 +9,7 @@ namespace Consumer2
     class Program
     {
         private const string Exchange = "fanout-exchange-example";
-        private const string Queue = "quotes2";
+        private const string Queue = "quotes";
 
         static void Main()
         {
