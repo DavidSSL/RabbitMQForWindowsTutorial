@@ -20,13 +20,13 @@ namespace Producer
             var connectionFactory = new ConnectionFactory();
             IConnection connection = connectionFactory.CreateConnection();
             IModel channel = connection.CreateModel();
-
-            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout, false, true, null);
+            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout);
 
             var thread = new Thread(() => PublishQuotes(channel));
             thread.Start();
 
             Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
 
             _cancelling = true;
 
@@ -38,7 +38,10 @@ namespace Producer
         {
             while (true)
             {
-                if (_cancelling) return;
+                if (_cancelling)
+                {
+                    return;
+                }
                 IEnumerable<string> quotes = FetchStockQuotes(new[] { "GOOG", "HD", "MCD" });
 
                 foreach (var quote in quotes)
