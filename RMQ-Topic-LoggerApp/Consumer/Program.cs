@@ -12,7 +12,7 @@ namespace Consumer
         {
             Console.WriteLine("Should show only Personal messages");
             Console.WriteLine("=================================="); const string exchange = "topic-exchange-example";
-            const string queue = "log";
+            const string queue = "log-personal";
 
             var connectionFactory = new ConnectionFactory();
             var connection = connectionFactory.CreateConnection();

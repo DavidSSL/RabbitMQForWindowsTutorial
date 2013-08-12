@@ -13,7 +13,7 @@ namespace Consumer2
             Console.WriteLine("Should show only Business messages");
             Console.WriteLine("==================================");
             const string exchange = "topic-exchange-example";
-            const string queue = "log";
+            const string queue = "log-business";
 
             var connectionFactory = new ConnectionFactory();
             var connection = connectionFactory.CreateConnection();
