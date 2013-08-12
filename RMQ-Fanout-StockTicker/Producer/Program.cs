@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using RabbitMQ.Client;
 
-namespace RMQ_Fanout_StockTicker
+namespace Producer
 {
     class Program
     {
@@ -21,13 +21,13 @@ namespace RMQ_Fanout_StockTicker
             IConnection connection = connectionFactory.CreateConnection();
             IModel channel = connection.CreateModel();
 
-            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout,false, true, null);
+            channel.ExchangeDeclare(Exchange, ExchangeType.Fanout, false, true, null);
 
-            var thread = new Thread(() =>PublishQuotes(channel));
+            var thread = new Thread(() => PublishQuotes(channel));
             thread.Start();
 
             Console.WriteLine("Press any key to exit");
-          
+
             _cancelling = true;
 
             channel.Close();
@@ -39,7 +39,7 @@ namespace RMQ_Fanout_StockTicker
             while (true)
             {
                 if (_cancelling) return;
-                IEnumerable<string> quotes = FetchStockQuotes(new[] {"GOOG", "HD", "MCD"});
+                IEnumerable<string> quotes = FetchStockQuotes(new[] { "GOOG", "HD", "MCD" });
 
                 foreach (var quote in quotes)
                 {

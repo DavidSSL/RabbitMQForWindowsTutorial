@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RMQ-Fanout-StockTicker")]
+[assembly: AssemblyTitle("Producer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RMQ-Fanout-StockTicker")]
+[assembly: AssemblyProduct("Producer")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0c847bdc-7037-427a-81d3-77fe7c1fe63a")]
+[assembly: Guid("f56661e1-daba-4a6b-89d8-60023d53f9c7")]
 
 // Version information for an assembly consists of the following four values:
 //
