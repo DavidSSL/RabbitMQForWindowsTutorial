@@ -16,6 +16,7 @@ namespace Producer
         {
             var connectionFactory = new ConnectionFactory();
             IConnection connection = connectionFactory.CreateConnection();
+
             IModel channel = connection.CreateModel();
             channel.ExchangeDeclare(ExchangeName, ExchangeType.Headers, false, true, null);
             byte[] message = Encoding.UTF8.GetBytes("Hello, World!");
@@ -25,6 +26,7 @@ namespace Producer
                     Headers = new Dictionary<string, object>
                         {
                             {"key1", "12345"}
+                            ,{"key2", "123455"}
                         }
                 };
 

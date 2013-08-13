@@ -2,15 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Consumer;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 
-namespace Consumer
+namespace Consumer2
 {
     class Program
     {
-        private const string QueueName = "header-queue-example";
+        private const string QueueName = "header-queue-example2";
         private const string ExchangeName = "header-exchange-example";
 
         static void Main()
@@ -24,10 +25,9 @@ namespace Consumer
 
             IDictionary specs = new Dictionary<string, string>();
             specs.Add("x-match", "any");
-            specs.Add("key1", "12345");
             specs.Add("key2", "123455");
             channel.QueueBind(QueueName, ExchangeName, string.Empty, specs);
-            Console.WriteLine("In Consumer");
+            Console.WriteLine("In Consumer2");
             channel.StartConsume(QueueName, MessageHandler);
             channel.Close();
             connection.Close();
